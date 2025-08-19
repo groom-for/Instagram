@@ -91,21 +91,6 @@ body {
 .sidebar a {
   text-decoration-line: none;
 }
-/* .more {
-  display: flex;
-  flex-direction: column;
-  margin-top: auto;
-  width: 100%;
-  background: none;
-  border: none;
-  color: var(--text);
-  padding: 10px 12px;
-  border-radius: 10px;
-  text-align: left;
-}  */
-/* .more:hover {
-  background: #101010;
-} */
 
 /* 더보기 클릭 시  */
 .more__action {
@@ -216,8 +201,7 @@ body {
 .post {
   width: var(--feed-w);
   margin-top: var(--gap);
-  border: 1px solid var(--line);
-  border-radius: var(--r);
+
   background: var(--panel);
   overflow: hidden;
 }
@@ -226,7 +210,6 @@ body {
   align-items: center;
   gap: 10px;
   padding: 12px 14px;
-  border-bottom: 1px solid var(--line);
 }
 .avatar img {
   width: 32px;
@@ -256,8 +239,16 @@ body {
   background: #111;
 }
 
+.post__image__wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+
 .post__media {
-  width: 100%;
+  width: 90%;
   aspect-ratio: 1/1;
   object-fit: cover;
   display: block;
@@ -270,7 +261,6 @@ body {
   align-items: center; /* 세로 가운데 정렬 */
   justify-content: space-between; /* 좌/우 아이콘 그룹 간 간격 */
   padding: 6px 10px; /* 터치 여백 */
-  border-bottom: 1px solid var(--line);
 
   /* 줄바꿈/박스 계산 */
   flex-wrap: nowrap; /* 한 줄 유지 */
