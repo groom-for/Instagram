@@ -112,7 +112,10 @@
         <!-- 좋아요/본문/댓글 -->
         <div class="post__body">
           <div class="likes"><strong>좋아요 12,517개</strong></div>
-          <div class="caption"><strong>8bitdo</strong> Get ready, the 8BitDo Pro 3 Bluetooth Gamepad will be officially in stock and available on Aug 12th… <button class="moreless">더 보기</button></div>
+          <div class="caption">
+            <div class="caption-text"><strong>8bitdo</strong> Get ready, the 8BitDo Pro 3 Bluetooth Gamepad will be officially in stock and available on Aug 12th…</div>
+            <button class="moreless" style="display: none;">더 보기</button>
+          </div>
           <button class="comments">댓글 23개 모두 보기</button>
           <div class="add-comment">댓글 달기…</div>
         </div>
@@ -195,6 +198,43 @@
   
 
   <script>
+  // 더 보기 버튼 표시 여부 결정 함수
+  function toggleMoreButton(captionElement) {
+    const moreButton = captionElement.querySelector('.moreless');
+    const captionText = captionElement.querySelector('.caption-text');
+    
+    if (moreButton && captionText) {
+      // 텍스트가 한 줄을 넘어가는지 확인
+      const lineHeight = parseInt(window.getComputedStyle(captionText).lineHeight);
+      const textHeight = captionText.scrollHeight;
+      
+      if (textHeight > lineHeight * 1.5) { // 한 줄보다 높으면
+        moreButton.style.display = 'inline';
+        // 더 보기 클릭 이벤트 추가
+        moreButton.onclick = function() {
+          const caption = this.closest('.caption');
+          if (caption.classList.contains('expanded')) {
+            caption.classList.remove('expanded');
+            this.textContent = '더 보기';
+          } else {
+            caption.classList.add('expanded');
+            this.textContent = '접기';
+          }
+        };
+      } else {
+        moreButton.style.display = 'none';
+      }
+    }
+  }
+
+  // 페이지 로드 시 기존 게시글의 더 보기 버튼 처리
+  document.addEventListener('DOMContentLoaded', function() {
+    const captions = document.querySelectorAll('.caption');
+    captions.forEach(caption => {
+      toggleMoreButton(caption);
+    });
+  });
+
   const count = 3;
   let itemIndex = 0;
 
@@ -259,7 +299,10 @@
 
                 <div class="post__body">
                   <div class="likes"><strong>좋아요 ${post.likes}개</strong></div>
-                  <div class="caption"><strong>${post.username}</strong> ${post.caption} <button class="moreless">더 보기</button></div>
+                  <div class="caption">
+                    <div class="caption-text"><strong>${post.username}</strong> ${post.caption}</div>
+                    <button class="moreless" style="display: none;">더 보기</button>
+                  </div>
                   <button class="comments">댓글 ${post.comments}개 모두 보기</button>
                   <div class="add-comment">댓글 달기…</div>
                 </div>
@@ -270,6 +313,12 @@
 
         itemIndex += count;
         document.querySelector('.loading_spinner').style.display = 'none';
+
+        // 새로 생성된 게시글의 더 보기 버튼 처리
+        const newCaptions = document.querySelectorAll('.caption');
+        newCaptions.forEach(caption => {
+          toggleMoreButton(caption);
+        });
 
       }, 2500); // 로딩 시간
     }

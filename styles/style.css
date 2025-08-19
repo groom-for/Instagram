@@ -37,7 +37,7 @@ body {
   column-gap: var(--gap);
 }
 
-.main__wrapper{
+.main__wrapper {
   display: flex;
   justify-content: center;
   gap: var(--gap);
@@ -48,7 +48,7 @@ body {
   position: sticky;
   top: 0;
   height: 100dvh;
-  padding: 8px 12px 20px 12px ;
+  padding: 8px 12px 20px 12px;
   border-right: 1px solid var(--line);
   display: flex;
   flex-direction: column;
@@ -59,7 +59,7 @@ body {
   margin-bottom: 19px;
   padding: 25px 12px 16px;
 }
-.logo img{
+.logo img {
   width: 106px;
 }
 .nav {
@@ -89,7 +89,7 @@ body {
   font-size: 15px;
 }
 .sidebar a {
-  text-decoration-line:none;
+  text-decoration-line: none;
 }
 /* .more {
   display: flex;
@@ -108,72 +108,69 @@ body {
 } */
 
 /* 더보기 클릭 시  */
-.more__action{
+.more__action {
   display: none;
   width: 266px;
   height: 404.5px;
   border-radius: 15px;
-  background-color: #262626 ;
+  background-color: #262626;
   position: fixed;
   bottom: 110px;
   padding: 8px;
 }
 
-.more__options{
+.more__options {
   height: 50px;
   display: flex;
   align-items: center;
   border-radius: 10px;
   padding: 16px;
-  gap:12px;
+  gap: 12px;
 }
 .more__options:hover,
-.meta__options:hover{
+.meta__options:hover {
   display: flex;
   align-items: center;
   border-radius: 10px;
-  background-color: #404040 ;
+  background-color: #404040;
 }
-.more__options_line1{
+.more__options_line1 {
   height: 6px;
 }
-.more__options_line2{
+.more__options_line2 {
   height: 0.5px;
 }
 .more__options_line1,
-.more__options_line2{
-  background-color: #3a3a3a ;
-  margin : 8px -8px 8px -8px;
+.more__options_line2 {
+  background-color: #3a3a3a;
+  margin: 8px -8px 8px -8px;
 }
 .more__action.active,
-.meta__action.active{
+.meta__action.active {
   display: block;
 }
 
-.meta__action{
+.meta__action {
   display: none;
   width: 266px;
   height: 128px;
   border-radius: 15px;
-  background-color: #262626 ;
+  background-color: #262626;
   position: fixed;
   bottom: 65px;
   padding: 8px;
- 
 }
-.meta__options{
+.meta__options {
   width: 250px;
   height: 48px;
   display: flex;
   align-items: center;
   border-radius: 15px;
   padding: 12px;
-  gap:12px;
-  margin:4px 0px;
-   transition: 0.3s all;
+  gap: 12px;
+  margin: 4px 0px;
+  transition: 0.3s all;
 }
-
-
 
 /* 중앙 메인 */
 .main {
@@ -268,29 +265,28 @@ body {
 
 /* 게시물 액션 영역: 아이콘 줄(좌우 배치) + 높이 비정상 증가 방지 */
 .post__actions {
-/*  border: 1px solid red;  */            /* 디버깅용 테두리 */
-  display: flex;                      /* 가로 플렉스 */
-  align-items: center;                /* 세로 가운데 정렬 */
-  justify-content: space-between;     /* 좌/우 아이콘 그룹 간 간격 */
-  padding: 6px 10px;                  /* 터치 여백 */
+  /*  border: 1px solid red;  */ /* 디버깅용 테두리 */
+  display: flex; /* 가로 플렉스 */
+  align-items: center; /* 세로 가운데 정렬 */
+  justify-content: space-between; /* 좌/우 아이콘 그룹 간 간격 */
+  padding: 6px 10px; /* 터치 여백 */
   border-bottom: 1px solid var(--line);
 
   /* 줄바꿈/박스 계산 */
-  flex-wrap: nowrap;                  /* 한 줄 유지 */
-  min-height: 44px;                   /* 최소 터치 타겟 */
+  flex-wrap: nowrap; /* 한 줄 유지 */
+  min-height: 44px; /* 최소 터치 타겟 */
   box-sizing: border-box;
 
   /* === 높이 늘어남 방지 핵심 === */
-  height: auto;                       /* 혹시 상위에서 height:100% 강제된 경우 초기화 */
-  flex: 0 0 auto;                     /* 부모가 남는 공간 채우라고 해도 grow 안 함 */
-  align-self: start;                  /* Grid/Flex의 stretch 해제 (grid에선 'start'가 정답) */
+  height: auto; /* 혹시 상위에서 height:100% 강제된 경우 초기화 */
+  flex: 0 0 auto; /* 부모가 남는 공간 채우라고 해도 grow 안 함 */
+  align-self: start; /* Grid/Flex의 stretch 해제 (grid에선 'start'가 정답) */
   /* place-self: start;               /* (부모가 Grid일 때) align-self+justify-self 한 번에 — 필요시 해제 주석 제거 */
-  
+
   /* 최후의 안전장치(원치 않으면 지워도 됨) */
   /* max-height: 60px;                /* 혹시 또 늘면 강제 상한 */
   /* overflow: hidden;                /* 상한 넘치는 내용 숨김 */
 }
-
 
 .post__actions .left,
 .post__actions .action_right {
@@ -319,13 +315,33 @@ body {
 }
 .caption {
   color: #ddd;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  line-height: 1.4;
 }
+
+.caption .caption-text {
+  flex: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+}
+
+.caption.expanded .caption-text {
+  -webkit-line-clamp: unset;
+}
+
 .caption .moreless {
   background: none;
   border: none;
   color: var(--muted);
   cursor: pointer;
   padding: 0 4px;
+  align-self: flex-start;
+  white-space: nowrap;
 }
 .comments {
   background: none;
@@ -341,15 +357,14 @@ body {
   padding-top: 10px;
 }
 
-.loading_spinner{
+.loading_spinner {
   margin-top: 40px;
   width: 30px;
   height: 30px;
 }
-.loading_spinner img{
+.loading_spinner img {
   width: 100%;
 }
-
 
 /* 우측 추천 */
 .right {
@@ -363,7 +378,7 @@ body {
   align-items: center;
   gap: 10px;
   margin-bottom: 18px;
-  margin-top:36px;
+  margin-top: 36px;
 }
 .account img {
   width: 48px;
@@ -441,11 +456,10 @@ body {
   color: var(--muted);
   text-decoration: none;
 }
-.foot a:hover, 
-.footer a:hover{
+.foot a:hover,
+.footer a:hover {
   text-decoration: underline;
 }
-
 
 .footer {
   grid-column-start: 2;
@@ -455,23 +469,21 @@ body {
   align-items: center;
   margin-bottom: 52px;
 }
-.footer div{
+.footer div {
   margin: 6px;
   gap: 12px;
 }
-.footer_top{
+.footer_top {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 .footer a,
-.footer span{
+.footer span {
   text-decoration: none;
   color: var(--muted);
   font-size: 12px;
 }
-
-
 
 /* --- 반응형: 태블릿/모바일 --- */
 @media (max-width: 1100px) {
@@ -527,7 +539,7 @@ body {
   :root {
     --feed-w: 100%;
   }
-  .footer{
+  .footer {
     display: none;
   }
 }
