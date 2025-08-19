@@ -200,9 +200,10 @@ body {
 
 .post {
   width: var(--feed-w);
+  padding-bottom: 16px;
+  margin-bottom: 20px;
   margin-top: var(--gap);
-
-  background: var(--panel);
+  border-bottom: 1px solid var(--line);
   overflow: hidden;
 }
 .post__head {
@@ -343,8 +344,6 @@ body {
 }
 .add-comment {
   color: var(--muted);
-  border-top: 1px solid var(--line);
-  padding-top: 10px;
 }
 
 .loading_spinner {
